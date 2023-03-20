@@ -6,17 +6,15 @@ import ProductItem from "./ProductItem";
 import "./ProductItem.css";
 import { fetchProductDetail } from "../redux/Thunk/product";
 import  productActions  from "../redux/slice/product";
-
-//import CircularProgress from '@mui/material/CircularProgress';
-
+import CircularProgress from "@material/circular-progress";
 
 export default function ProductList() {
   const products= useSelector((state:RootState)=>state.product.productList);
 console.log(products,"products");
-  //const loading = useSelector((state: RootState) => state.product)
+  const loading = useSelector((state: RootState) => state.product.productList)
   const dispatch = useDispatch<AppDispatch>();
-  //const dispatchLoading = useDispatch();
- // console.log(loading)
+  const dispatchLoading = useDispatch();
+ console.log(loading)
  useEffect(() => {
   dispatch(fetchProductDetail());
 }, [dispatch])
